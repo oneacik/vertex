@@ -1,0 +1,2 @@
+1000 1000 #map size
+0 1 500 500 0 0#/Time in frame count/ShipID/x/y/d_x/d_y
