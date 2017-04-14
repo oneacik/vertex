@@ -1,7 +1,8 @@
 OUT=../out/
 
 build: main.cpp
-	$(CXX) $? -o $(OUT)exec
+	export LD_LIBRARY_PATH=/usr/lib64/
+	$(CXX) $? -o $(OUT)exec -lglfw -lGL
 
 
 	
