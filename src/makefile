@@ -1,18 +1,20 @@
 INC=include/
+OUT=../out/
+.PHONY = all
+CXXFLAGS = -O0 -g
 
-build: main.o Object.o
-	$(CXX) $? -o exec -lglfw -lGL
+all:  $(OUT)exec
 
-.cpp.o:
-	$(CXX) -c $? -I $(INC) -o $@
+$(OUT)main.o: main.cpp
+	$(CXX) -c $? -I $(INC) -o $@ $(CXXFLAGS)
 
-Object.o: Object.cpp
-main.o: main.cpp
+$(OUT)Object.o: Object.cpp $(INC)Object.h
+	$(CXX) -c $< -I $(INC) -o $@ $(CXXFLAGS)
+
+$(OUT)objects/Sample.o: 
+	cd objects && make
+
+$(OUT)exec: $(OUT)main.o $(OUT)Object.o $(OUT)objects/Sample.o
+	$(CXX) $? -o $@ -lGL -lglfw $(CXXFLAGS)
 
 
-build: main.cpp
-	export LD_LIBRARY_PATH=/usr/lib64/
-	$(CXX) $? -o $(OUT)exec -lglfw -lGL
-
-
-	

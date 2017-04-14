@@ -1,9 +1,12 @@
+.PHONY= all clean
+PUSIA=ciapa
+
 all: 
-	cp -R src/* out/
-	cd out && make build
+	-mkdir out
+	cd src && make all
 
 clean: 
-	rm -rf out/*
+	-rm -rf out/*
 	
 	
 
