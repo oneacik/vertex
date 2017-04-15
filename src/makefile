@@ -11,10 +11,10 @@ $(OUT)main.o: main.cpp
 $(OUT)Object.o: Object.cpp $(INC)Object.h
 	$(CXX) -c $< -I $(INC) -o $@ $(CXXFLAGS)
 
-$(OUT)objects/Sample.o: 
+$(OUT)objects/Objects.o: 
 	cd objects && make
 
-$(OUT)exec: $(OUT)main.o $(OUT)Object.o $(OUT)objects/Sample.o
+$(OUT)exec: $(OUT)main.o $(OUT)Object.o $(OUT)objects/Objects.o
 	$(CXX) $? -o $@ -lGL -lglfw $(CXXFLAGS)
 
 
